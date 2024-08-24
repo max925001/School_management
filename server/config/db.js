@@ -1,13 +1,12 @@
+require('dotenv').config()
 const mysql = require('mysql');
-const dotenv = require('dotenv');
 
-dotenv.config();
-
+console.log(process.env.DB_PASSWORD)
 const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+        host: process.env.DB_HOST || 'localhost',      // Use environment variable or fallback to 'localhost'
+    user: process.env.DB_USER || 'root',           // Use environment variable or fallback to 'root'
+    password: process.env.DB_PASSWORD || 'Pandey925@#', // Use environment variable or fallback to your password
+    database: process.env.DB_NAME || 'school_management'
 });
 
 db.connect((err) => {
