@@ -7,12 +7,12 @@ const morgan = require('morgan')
 const app = express();
 
 app.use(bodyParser.json());
-
+app.use(morgan('dev'))
 app.use('/api', schoolRoutes);
 
 const PORT = process.env.PORT || 10000;
 
-app.use(morgan)
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
